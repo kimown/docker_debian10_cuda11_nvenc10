@@ -67,7 +67,7 @@ sudo apt-get install -y libunistring-dev libgnutls28-dev
 export DIR=`pwd`
 mkdir -p ffmpeg_sources ffmpeg_build bin
 cd $DIR/ffmpeg_sources
-copy ../ffmpeg-4.3.1.tar.bz2 .
+cp ../ffmpeg-4.3.1.tar.bz2 .
 tar xjvf ffmpeg-4.3.1.tar.bz2
 cd ffmpeg-4.3.1 
 PATH="$DIR/bin:$PATH" PKG_CONFIG_PATH="$DIR/ffmpeg_build/lib/pkgconfig" ./configure \
