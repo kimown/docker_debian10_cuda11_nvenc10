@@ -6,4 +6,6 @@ md5sum *.*
 
 
 docker build -t docker_debian10_cuda11_nvenc10:latest .
+
+docker run --gpus all -ti docker_debian10_cuda11_nvenc10 /bin/bash
 ```
