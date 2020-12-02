@@ -15,38 +15,86 @@ deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
 deb-src http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
 EOT
 
-apt-get update && apt-get -y install build-essential vim wget git kmod libxml2-dev
+apt-get update && apt-get -y install build-essential vim wget git kmod libxml2-dev sudo
 
-cd /opt/tiger/mdk/
-chmod +x NVIDIA-Linux-x86_64-418.116.00.run
-sh NVIDIA-Linux-x86_64-418.116.00.run -s --no-kernel-module
-
-#chmod +x cuda_10.0.130_410.48_linux.run
-#./cuda_10.0.130_410.48_linux.run --no-opengl-libs  --verbose --toolkit --samples --silent --override
-
-chmod +x cuda_10.1.243_418.87.00_linux.run
-./cuda_10.1.243_418.87.00_linux.run --no-opengl-libs --toolkit --samples --silent --override
-
-
-echo "export PATH=/usr/local/cuda-10.1/bin:\$PATH" >>~/.bashrc
-echo "export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:\$LD_LIBRARY_PATH" >>~/.bashrc
-source ~/.bashrc
-
-nvcc  --version
-
-cd /usr/local/cuda-10.1/samples/1_Utilities/deviceQuery
-make -j$(nproc)
-ls 
-../../bin/x86_64/linux/release/deviceQuery
-
-cd /usr/local/cuda-10.1/samples
-make -j$(nproc)
-
-
-
-#docker build -t debian10_cuda10:latest .
-
-#docker run --gpus all -ti --rm debian10_cuda10 /usr/local/cuda-10.0/samples/bin/x86_64/linux/release/deviceQuery
-
-#docker images
-#docker run --gpus all -ti --rm debian10_cuda10 /usr/local/cuda-10.0/samples/bin/x86_64/linux/release/deviceQuery
+chmod +x cuda_11.1.1_455.32.00_linux.run
+./cuda_11.1.1_455.32.00_linux.run --no-opengl-libs --toolkit --samples --silent --override
+rm -rf cuda_11.1.1_455.32.00_linux.run
+#echo "export PATH=/usr/local/cuda-11.1/bin:\$PATH" >>~/.bashrc
+#echo "export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:\$LD_LIBRARY_PATH" >>~/.bashrc
+#export PATH=/usr/local/cuda-10.1/bin:$PATH
+#export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH
+#source ~/.bashrc
+#find / -name nvcc
+#nvcc  --version
+#
+#
+#cd /docker_debian10_cuda11_nvenc10
+#cd nv-codec-headers
+#git checkout sdk/10.0
+#make
+#make install
+#cd ..
+#rm -rf nv-codec-headers
+#
+#cd /docker_debian10_cuda11_nvenc10
+#sudo apt-get update -qq && sudo apt-get -y install \
+#  autoconf \
+#  automake \
+#  build-essential \
+#  cmake \
+#  git-core \
+#  libass-dev \
+#  libfreetype6-dev \
+#  libgnutls28-dev \
+#  libsdl2-dev \
+#  libtool \
+#  libva-dev \
+#  libvdpau-dev \
+#  libvorbis-dev \
+#  libxcb1-dev \
+#  libxcb-shm0-dev \
+#  libxcb-xfixes0-dev \
+#  pkg-config \
+#  texinfo \
+#  wget \
+#  yasm \
+#  zlib1g-dev
+#  
+#sudo apt-get install nasm libx264-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev
+#sudo apt-get install libunistring-dev libgnutls28-dev
+#
+#export DIR=`pwd`
+#mkdir -p ffmpeg_sources ffmpeg_build bin
+#cd $DIR/ffmpeg_sources
+#tar xjvf ffmpeg-4.3.1.tar.bz2
+#cd ffmpeg-4.3.1 
+#PATH="$DIR/bin:$PATH" PKG_CONFIG_PATH="$DIR/ffmpeg_build/lib/pkgconfig" ./configure \
+#  --prefix="$DIR/ffmpeg_build" \
+#  --pkg-config-flags="--static" \
+#  --extra-cflags="-I$DIR/ffmpeg_build/include" \
+#  --extra-ldflags="-L$DIR/ffmpeg_build/lib" \
+#  --extra-libs="-lpthread -lm" \
+#  --bindir="$DIR/bin" \
+#  --enable-static \
+#  --disable-shared \
+#  --enable-gpl \
+#  --enable-gnutls \
+#  --disable-libaom \
+#  --enable-libass \
+#  --enable-libfdk-aac \
+#  --enable-libfreetype \
+#  --enable-libmp3lame \
+#  --enable-libopus \
+#  --enable-libvorbis \
+#  --enable-libvpx \
+#  --enable-libx264 \
+#  --disable-libx265 \
+#  --enable-nonfree \
+#  --enable-cuda-nvcc --enable-libnpp --extra-cflags=-I/usr/local/cuda/include --extra-ldflags=-L/usr/local/cuda/lib64 \
+#  --enable-cuda --enable-cuvid --enable-nvenc
+#  
+#PATH="$PWD/bin:$PATH" make -j$(nproc)
+#make install
+#cd ../..
+#rm -rf ffmpeg_sources
