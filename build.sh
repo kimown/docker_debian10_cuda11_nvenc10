@@ -62,8 +62,8 @@ sudo apt-get update -qq && sudo apt-get -y install \
   wget \
   yasm \
   zlib1g-dev
-sudo apt-get install nasm libx264-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev
-sudo apt-get install libunistring-dev libgnutls28-dev
+sudo apt-get install -y nasm libx264-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev
+sudo apt-get install -y libunistring-dev libgnutls28-dev
 export DIR=`pwd`
 mkdir -p ffmpeg_sources ffmpeg_build bin
 cd $DIR/ffmpeg_sources
