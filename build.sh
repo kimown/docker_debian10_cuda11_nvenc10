@@ -17,7 +17,7 @@ EOT
 
 apt-get update && apt-get -y install build-essential vim wget git kmod libxml2-dev sudo
 
-
+cd /docker_debian10_cuda11_nvenc10
 chmod +x cuda_11.0.3_450.51.06_linux.run
 apt-get update && apt-get -y install libxml2-dev
 ./cuda_11.0.3_450.51.06_linux.run --no-opengl-libs --toolkit --samples --silent --override
@@ -62,10 +62,8 @@ sudo apt-get update -qq && sudo apt-get -y install \
   wget \
   yasm \
   zlib1g-dev
-
 sudo apt-get install nasm libx264-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev
 sudo apt-get install libunistring-dev libgnutls28-dev
-
 export DIR=`pwd`
 mkdir -p ffmpeg_sources ffmpeg_build bin
 cd $DIR/ffmpeg_sources
