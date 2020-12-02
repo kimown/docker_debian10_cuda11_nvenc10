@@ -1,5 +1,6 @@
 # run
 ```shell
+# NVIDIA-SMI 450.80.02    Driver Version: 450.80.02    CUDA Version: 11.0
 sh download.sh
 
 md5sum *.*

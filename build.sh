@@ -17,9 +17,9 @@ EOT
 
 apt-get update && apt-get -y install build-essential vim wget git kmod libxml2-dev sudo
 
-chmod +x cuda_11.1.1_455.32.00_linux.run
-./cuda_11.1.1_455.32.00_linux.run --no-opengl-libs --toolkit --samples --silent --override
-rm -rf cuda_11.1.1_455.32.00_linux.run
+chmod +x cuda_11.0.3_450.51.06_linux.run
+./cuda_11.0.3_450.51.06_linux.run --no-opengl-libs --toolkit --samples --silent --override
+rm -rf cuda_11.0.3_450.51.06_linux.run
 #echo "export PATH=/usr/local/cuda-11.1/bin:\$PATH" >>~/.bashrc
 #echo "export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:\$LD_LIBRARY_PATH" >>~/.bashrc
 #export PATH=/usr/local/cuda-10.1/bin:$PATH
