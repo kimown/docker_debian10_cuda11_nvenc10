@@ -75,44 +75,44 @@ cd ffmpeg-4.3.1
 sed -i 's/sm_30/sm_35/g' configure
 sed -i 's/compute_30/compute_35/g' configure
 
-PATH="$DIR/bin:$PATH" PKG_CONFIG_PATH="$DIR/ffmpeg_build/lib/pkgconfig" ./configure \
-  --prefix="$DIR/ffmpeg_build" \
-  --pkg-config-flags="--static" \
-  --extra-cflags="-I$DIR/ffmpeg_build/include" \
-  --extra-ldflags="-L$DIR/ffmpeg_build/lib" \
-  --extra-libs="-lpthread -lm" \
-  --bindir="$DIR/bin" \
-  --enable-static \
-  --disable-shared \
-  --enable-gpl \
-  --enable-gnutls \
-  --disable-libaom \
-  --enable-libass \
-  --enable-libfdk-aac \
-  --enable-libfreetype \
-  --enable-libmp3lame \
-  --enable-libopus \
-  --enable-libvorbis \
-  --enable-libvpx \
-  --enable-libx264 \
-  --disable-libx265 \
-  --enable-nonfree \
-  --enable-cuda-nvcc --enable-libnpp --extra-cflags=-I/usr/local/cuda/include --extra-ldflags=-L/usr/local/cuda/lib64 \
-  --enable-cuda --enable-cuvid --enable-nvenc
-
-PATH="$PWD/bin:$PATH" make -j$(nproc)
-make install
-cd ..
-cd bin
-
-./ffmpeg -codecs|grep nvenc
-./ffmpeg -y -f lavfi -i color=c=white@1:duration=500:s=qcif:r=10:size=1280x720 input.mp4
-./ffmpeg -i input.mp4  frame_%d.jpeg
-./ffmpeg -i input.mp4 -c:v h264_nvenc output.mp4
-
-echo 'export PATH="/docker_debian10_cuda11_nvenc10/ffmpeg-4.3.1-amd64-static/bin:$PATH"' >> /etc/profile
-echo 'cat /etc/profile'
-cat /etc/profile
-echo 'export PATH="/docker_debian10_cuda11_nvenc10/ffmpeg-4.3.1-amd64-static/bin:$PATH"' >> ~/.bashrc
-echo 'cat ~/.bashrc'
-cat ~/.bashrc
+#PATH="$DIR/bin:$PATH" PKG_CONFIG_PATH="$DIR/ffmpeg_build/lib/pkgconfig" ./configure \
+#  --prefix="$DIR/ffmpeg_build" \
+#  --pkg-config-flags="--static" \
+#  --extra-cflags="-I$DIR/ffmpeg_build/include" \
+#  --extra-ldflags="-L$DIR/ffmpeg_build/lib" \
+#  --extra-libs="-lpthread -lm" \
+#  --bindir="$DIR/bin" \
+#  --enable-static \
+#  --disable-shared \
+#  --enable-gpl \
+#  --enable-gnutls \
+#  --disable-libaom \
+#  --enable-libass \
+#  --enable-libfdk-aac \
+#  --enable-libfreetype \
+#  --enable-libmp3lame \
+#  --enable-libopus \
+#  --enable-libvorbis \
+#  --enable-libvpx \
+#  --enable-libx264 \
+#  --disable-libx265 \
+#  --enable-nonfree \
+#  --enable-cuda-nvcc --enable-libnpp --extra-cflags=-I/usr/local/cuda/include --extra-ldflags=-L/usr/local/cuda/lib64 \
+#  --enable-cuda --enable-cuvid --enable-nvenc
+#
+#PATH="$PWD/bin:$PATH" make -j$(nproc)
+#make install
+#cd ..
+#cd bin
+#
+#./ffmpeg -codecs|grep nvenc
+#./ffmpeg -y -f lavfi -i color=c=white@1:duration=500:s=qcif:r=10:size=1280x720 input.mp4
+#./ffmpeg -i input.mp4  frame_%d.jpeg
+#./ffmpeg -i input.mp4 -c:v h264_nvenc output.mp4
+#
+#echo 'export PATH="/docker_debian10_cuda11_nvenc10/ffmpeg-4.3.1-amd64-static/bin:$PATH"' >> /etc/profile
+#echo 'cat /etc/profile'
+#cat /etc/profile
+#echo 'export PATH="/docker_debian10_cuda11_nvenc10/ffmpeg-4.3.1-amd64-static/bin:$PATH"' >> ~/.bashrc
+#echo 'cat ~/.bashrc'
+#cat ~/.bashrc
