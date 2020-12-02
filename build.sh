@@ -70,6 +70,11 @@ cd $DIR/ffmpeg_sources
 cp ../ffmpeg-4.3.1.tar.bz2 .
 tar xjvf ffmpeg-4.3.1.tar.bz2
 cd ffmpeg-4.3.1 
+
+# from: ffmpeg_hw_nvenc.sh
+sed -i 's/sm_30/sm_35/g' configure
+sed -i 's/compute_30/compute_35/g' configure
+
 PATH="$DIR/bin:$PATH" PKG_CONFIG_PATH="$DIR/ffmpeg_build/lib/pkgconfig" ./configure \
   --prefix="$DIR/ffmpeg_build" \
   --pkg-config-flags="--static" \
