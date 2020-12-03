@@ -112,9 +112,6 @@ make install
 cd ../../bin
 
 ./ffmpeg -codecs|grep nvenc
-./ffmpeg -y -f lavfi -i color=c=white@1:duration=500:s=qcif:r=10:size=1280x720 input.mp4
-./ffmpeg -i input.mp4  frame_%d.jpeg
-./ffmpeg -y -i input.mp4 -c:v h264_nvenc output.mp4
 
 echo 'export PATH="/docker_debian10_cuda11_nvenc10/ffmpeg/bin:$PATH"' >> /etc/profile
 echo 'cat /etc/profile'
