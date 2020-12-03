@@ -32,6 +32,10 @@ nvcc  --version
 
 
 cd /docker_debian10_cuda11_nvenc10
+sh NVIDIA-Linux-x86_64-450.80.02.run -s --no-kernel-module
+
+
+cd /docker_debian10_cuda11_nvenc10
 cd nv-codec-headers
 git checkout sdk/10.0
 make
